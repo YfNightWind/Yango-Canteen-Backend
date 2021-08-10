@@ -1,5 +1,6 @@
 package com.alexlin.yangocanteen.controller;
 
+import com.alexlin.yangocanteen.base.BaseResult;
 import com.alexlin.yangocanteen.bean.User;
 import com.alexlin.yangocanteen.mapper.UserMapper;
 import com.google.gson.Gson;
@@ -16,15 +17,15 @@ public class UserController {
     private UserMapper mapper;
 
     @PostMapping("/login")
-    public String login(@RequestParam(value = "username", defaultValue = "") String username,
-                        @RequestParam(value = "password", defaultValue = "") String password) {
-        if (username.equals("")) return "账号必须传递！";
-        if (password.equals("")) return "密码必须传递！";
+    public BaseResult login(@RequestParam(value = "username", defaultValue = "") String username,
+                            @RequestParam(value = "password", defaultValue = "") String password) {
+        if (username.equals("")) return new BaseResult(400, "账号必须传递！", "");
+        if (password.equals("")) return new BaseResult(400, "密码必须传递！", "");
         User user = mapper.login(username, password);
         if (user == null) {
-            return "账号或密码不正确！";
+            return new BaseResult(500, "账号或密码不正确", "");
         } else {
-            return new Gson().toJson(user);//对象转json
+            return new BaseResult(200, "登录成功", user);
         }
     }
 }
