@@ -3,7 +3,6 @@ package com.alexlin.yangocanteen.controller;
 import com.alexlin.yangocanteen.base.BaseResult;
 import com.alexlin.yangocanteen.bean.User;
 import com.alexlin.yangocanteen.mapper.UserMapper;
-import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,4 +27,19 @@ public class UserController {
             return new BaseResult(200, "登录成功", user);
         }
     }
+
+    @PostMapping("/register")
+    public BaseResult register(User user) {
+        if (user == null || user.getUsername() == null || user.getPassword() == null)
+            return new BaseResult(400, "参数错误", "");
+
+        if (mapper.findUserByName(user.getUsername()) != null)
+            return new BaseResult(500, "用户已存在！", "");
+
+        if (mapper.register(user) == 0)
+            return new BaseResult(500, "注册失败", "");
+
+        return new BaseResult(200, "", "注册成功！");
+    }
+
 }
