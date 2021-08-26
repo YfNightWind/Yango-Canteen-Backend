@@ -1,5 +1,6 @@
 package com.alexlin.yangocanteen.controller;
 
+import com.alexlin.yangocanteen.bean.Menu;
 import com.alexlin.yangocanteen.result.BaseResult;
 import com.alexlin.yangocanteen.bean.Category;
 import com.alexlin.yangocanteen.mapper.CategoryMapper;
@@ -28,7 +29,7 @@ public class CategoryController {
     public BaseResult findByMenu(@RequestParam(value = "category", defaultValue = "") String category) {
 
         if (category.equals("")) return new BaseResult(400, "参数不能为空", "");
-        List<Category> all = mapper.findCategoryFromMenu(category);
+        List<Menu> all = mapper.findCategoryFromMenu(category);
 
         return new BaseResult(200, "查询成功", all);
 

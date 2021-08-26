@@ -1,7 +1,9 @@
 package com.alexlin.yangocanteen.mapper;
 
 import com.alexlin.yangocanteen.bean.Category;
+import com.alexlin.yangocanteen.bean.Menu;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -14,5 +16,5 @@ public interface CategoryMapper {
 
     // 从菜单中查找分类 ‼️
     @Select("SELECT * FROM menu WHERE category = #{category}")
-    List<Category> findCategoryFromMenu (String category);
+    List<Menu> findCategoryFromMenu (String category);
 }
