@@ -1,6 +1,6 @@
 package com.alexlin.yangocanteen.controller;
 
-import com.alexlin.yangocanteen.base.BaseResult;
+import com.alexlin.yangocanteen.result.BaseResult;
 import com.alexlin.yangocanteen.bean.FeedBack;
 import com.alexlin.yangocanteen.mapper.FeedBackMapper;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.alexlin.yangocanteen.base;
+package com.alexlin.yangocanteen.result;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
