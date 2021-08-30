@@ -3,6 +3,7 @@ package com.alexlin.yangocanteen.controller;
 import com.alexlin.yangocanteen.result.BaseResult;
 import com.alexlin.yangocanteen.bean.User;
 import com.alexlin.yangocanteen.mapper.UserMapper;
+import com.alexlin.yangocanteen.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ public class UserController {
         if (user == null) {
             return new BaseResult(500, "账号或密码不正确", "");
         } else {
+            user.setToken(JwtUtil.createToken(user));
             return new BaseResult(200, "登录成功", user);
         }
     }
@@ -40,6 +42,12 @@ public class UserController {
             return new BaseResult(500, "注册失败", "");
 
         return new BaseResult(200, "", "注册成功！");
+    }
+
+    @PostMapping("/token")
+    public boolean tokenVerify(@RequestParam(value = "username") String username,
+                               @RequestParam(value = "token") String token) {
+        return JwtUtil.checkToken(username, token);
     }
 
 }
