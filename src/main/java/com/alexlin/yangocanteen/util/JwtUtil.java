@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.UUID;
 
 public class JwtUtil {
-
+    //设置长一些防止出现is not secure enough for the HS256 algorithm的情况
     public static final String JWT_SIGN_KEY = "springboottokenzhendeshihaofuzawodoubuzhidaozenmegao";
 
     public static String createToken(User user) {
@@ -43,6 +43,7 @@ public class JwtUtil {
                 .setId(UUID.randomUUID().toString())
                 .setSubject(user.getUsername())
                 // signature
+                // 加上username使得每个用户具有唯一性
                 .signWith(SignatureAlgorithm.HS256, JWT_SIGN_KEY + user.getUsername())
                 .compact();
 
