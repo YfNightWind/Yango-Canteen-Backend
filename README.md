@@ -2,7 +2,7 @@
 本项目使用springboot2框架完成，目前正在努力重构中
 
 [原地址](https://github.com/280code/schoolFood)
-###功能列表
+### 功能列表
 - [x] 登录
 - [x] 注册
   - [x] token验证
