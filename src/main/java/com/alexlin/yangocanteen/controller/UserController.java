@@ -50,4 +50,15 @@ public class UserController {
         return JwtUtil.checkToken(username, token);
     }
 
+    @PostMapping("/delete")
+    public BaseResult deleteUser(@RequestParam(value = "username", defaultValue = "") String username) {
+        if (username == null) return new BaseResult(400, "用户名必须传", "");
+
+        if (mapper.deleteUser(username) == 0) {
+            return new BaseResult(400, "删除失败！", "");
+        } else {
+            return new BaseResult(200, "", "删除成功！");
+        }
+    }
+
 }
