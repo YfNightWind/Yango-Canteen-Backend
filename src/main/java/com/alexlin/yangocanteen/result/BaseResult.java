@@ -1,15 +1,46 @@
 package com.alexlin.yangocanteen.result;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-//出错或成功时返回的内容
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class BaseResult {
-    private int code;//200 means success
+    private int code;
     private String msg;
     private Object data;
+
+    public BaseResult(int code, String mesg, Object data) {
+    }
+
+    public BaseResult() {
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "BaseResult{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

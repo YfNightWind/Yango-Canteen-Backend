@@ -2,7 +2,6 @@ package com.alexlin.yangocanteen.controller;
 
 import com.alexlin.yangocanteen.result.BaseResult;
 import com.alexlin.yangocanteen.util.FileUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
