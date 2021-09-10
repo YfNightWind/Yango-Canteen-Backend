@@ -23,7 +23,7 @@ public class UserController {
         if (password.equals("")) return new BaseResult(400, "密码必须传递！", "");
         User user = mapper.login(username, password);
         if (user == null) {
-            return new BaseResult(500, "账号或密码不正确", "");
+            return new BaseResult(200, "账号或密码不正确", "");
         } else {
             user.setToken(JwtUtil.createToken(user));
             return new BaseResult(200, "登录成功", user);
