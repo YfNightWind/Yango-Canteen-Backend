@@ -14,6 +14,19 @@ public class FileUtil {
      * @throws Exception e
      */
     public static String upload(MultipartFile fileType, String path, String fileName) throws Exception {
+        // 文件类型校验
+
+        // 原始文件名称
+        String originalFileName = fileType.getOriginalFilename();
+        // 解析文件后缀
+        assert originalFileName != null;
+        int index = originalFileName.lastIndexOf(".");
+        String suffix = null;
+        if (index == -1 || (suffix = originalFileName.substring(index + 1)).isEmpty()) {
+            return "文件后缀不能为空！";
+        }
+
+
         // 将获取到到文件名称修改成一个独一无二的新名称
         String realFilePath = path + "/" + UUID.randomUUID().toString().replace("-", "")
                 + fileName.substring(fileName.lastIndexOf("."));
