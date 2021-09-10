@@ -14,31 +14,16 @@ public class JwtUtil {
 
     public static String createToken(User user) {
         String token;
-        long time = 1000L * 60 * 60 * 24 * 30;
-//        String signature = user.getUsername();
-//
-//        int calendarField = Calendar.DATE;
-//        int calendarInterval = 20;// 天数
-//        // 签名时间
-//        Date signTime = new Date();
-//
-//        Calendar nowTime = Calendar.getInstance();
-//        nowTime.add(calendarField, calendarInterval);
-//        // 到期时间
-//        Date expiresDate = nowTime.getTime();
-//
-//        token = JWT.create().withAudience(user.getUsername())// 将用户名存入token中
-//                .withIssuedAt(signTime)// 签名时间
-//                .withExpiresAt(expiresDate)// 到期时间
-//                .sign(Algorithm.HMAC256(JWT_SIGN_KEY));// 将用户名作为token密钥
+        long time = 1000L * 60 * 60 * 24 * 30; // 设置30天过期
+
         JwtBuilder jwtBuilder = Jwts.builder();
         token = jwtBuilder
                 // header
                 .setHeaderParam("typ", "JWT")
                 .setHeaderParam("alg", "HS256")
                 // payload
-                .claim("username", user.getUsername())
-                .claim("password", user.getPassword())
+                .claim("username", user.getUsername()) // 将用户名存入token
+                .claim("password", user.getPassword()) // 将密码存入token
                 .setExpiration(new Date(System.currentTimeMillis() + time))
                 .setId(UUID.randomUUID().toString())
                 .setSubject(user.getUsername())
