@@ -3,3 +3,5 @@ spring:
     url: jdbc:mysql://114.215.209.136:3306/schoolfood?characterEncoding=utf-8&serverTimezone=GMT%2B8
     username: schoolFood
     password: YangoFood
+server:
+  port: 8888
