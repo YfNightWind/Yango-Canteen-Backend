@@ -16,7 +16,7 @@ public class UploadFileController {
     @PostMapping
     public BaseResult upload(@RequestParam("image") MultipartFile image) throws Exception {
 
-        String path = "";// 路径待确定
+        String path = "/Users/alexlin/Downloads";// 路径待确定
         String result = FileUtil.upload(image,path, Objects.requireNonNull(image.getOriginalFilename()));
 
         return new BaseResult(200,"上传成功！",result);
