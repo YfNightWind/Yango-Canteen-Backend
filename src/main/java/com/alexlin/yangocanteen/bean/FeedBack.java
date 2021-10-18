@@ -1,7 +1,11 @@
 package com.alexlin.yangocanteen.bean;
 
+
+import javax.validation.constraints.NotNull;
+
 public class FeedBack {
     private String username;
+    @NotNull(message = "内容必须传递！")
     private String feedback;
     private String contact;
 
