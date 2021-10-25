@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.DigestUtils;
 
 @RestController
 @RequestMapping("user")
@@ -40,6 +41,11 @@ public class UserController {
 
         if (mapper.register(user) == 0)
             return new BaseResult(500, "注册失败", "");
+
+        // 对密码进行MD5加密
+        String md5Password = user.getPassword();
+        String md5 = DigestUtils.md5DigestAsHex(md5Password.getBytes());
+        user.setPassword(md5);
 
         return new BaseResult(200, "", "注册成功！");
     }
