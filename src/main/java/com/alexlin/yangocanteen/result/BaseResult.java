@@ -5,7 +5,10 @@ public class BaseResult {
     private String msg;
     private Object data;
 
-    public BaseResult(int code, String mesg, Object data) {
+    public BaseResult(int code, String msg, Object data) {
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
     }
 
     public BaseResult() {
