@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alexlin.yangocanteen.mapper.MenuMapper">
+    <insert id="insertMenu" parameterType="Menu">
+        insert into menu(name, restaurant, category, price)
+        values (#{name}, #{restaurant}, #{category}, #{price})
+    </insert>
+
+    <select id="findMenuByName" parameterType="String">
+        select name
+        from menu
+        where name = #{name}
+    </select>
+
+    <select id="findNameByRestaurantName" parameterType="String">
+        select name
+        from menu
+        where restaurant = #{restaurant}
+    </select>
+
+    <select id="findPriceByRestaurantName" parameterType="String">
+        select price
+        from menu
+        where restaurant = #{restaurant}
+    </select>
+
+    <select id="findCategoryByRestaurantName" parameterType="String">
+        select category
+        from menu
+        where restaurant = #{restaurant}
+    </select>
+</mapper>

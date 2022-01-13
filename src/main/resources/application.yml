@@ -6,3 +6,10 @@ spring:
 
 server:
   port: 5050
+
+# 配置mybatis规则
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.alexlin.yangocanteen.bean
