@@ -3,7 +3,6 @@ package com.alexlin.yangocanteen.mapper;
 import com.alexlin.yangocanteen.bean.Menu;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
