@@ -3,5 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.alexlin.yangocanteen.mapper.RestaurantMapper">
-
+    <select id="restaurantInfo" parameterType="Integer" resultType="Restaurant">
+        select *
+        from restaurant
+        where floor = #{floor}
+    </select>
 </mapper>
