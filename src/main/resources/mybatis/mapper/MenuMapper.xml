@@ -8,25 +8,25 @@
         values (#{name}, #{restaurant}, #{category}, #{price})
     </insert>
 
-    <select id="findMenuByName" parameterType="String">
+    <select id="findMenuByName" parameterType="String" resultType="Menu">
         select name
         from menu
         where name = #{name}
     </select>
 
-    <select id="findNameByRestaurantName" parameterType="String">
+    <select id="findNameByRestaurantName" parameterType="String" resultType="Menu">
         select name
         from menu
         where restaurant = #{restaurant}
     </select>
 
-    <select id="findPriceByRestaurantName" parameterType="String">
+    <select id="findPriceByRestaurantName" parameterType="String" resultType="Menu">
         select price
         from menu
         where restaurant = #{restaurant}
     </select>
 
-    <select id="findCategoryByRestaurantName" parameterType="String">
+    <select id="findCategoryByRestaurantName" parameterType="String" resultType="Menu">
         select category
         from menu
         where restaurant = #{restaurant}
