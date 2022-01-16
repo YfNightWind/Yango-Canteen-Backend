@@ -3,5 +3,27 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.alexlin.yangocanteen.mapper.UserMapper">
+    <select id="login" parameterType="String" resultType="User">
+        select *
+        from userinfo
+        where username = #{username}
+          and password = #{password}
+    </select>
 
+    <select id="findUserByName" parameterType="String" resultType="User">
+        select username
+        from userinfo
+        where username = #{username}
+    </select>
+
+    <insert id="register" parameterType="User">
+        insert into userinfo(username, password, identity)
+        values (#{username}, #{password}, #{identify})
+    </insert>
+
+    <delete id="deleteUser" parameterType="User">
+        delete
+        from userinfo
+        where username = #{username}
+    </delete>
 </mapper>
