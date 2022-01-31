@@ -1,5 +1,7 @@
 # 阳光学院校园食堂app后端部分(springboot版)
-本项目使用springboot框架完成，目前正在努力重构中
+
+#### 本项目使用springboot框架  
+#### 数据库文件在SQL文件夹下
 
 [原地址](https://github.com/280code/schoolFood)
 ### 功能列表
